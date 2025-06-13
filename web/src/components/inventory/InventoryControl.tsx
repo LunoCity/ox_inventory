@@ -13,6 +13,8 @@ const InventoryControl: React.FC = () => {
   const itemAmount = useAppSelector(selectItemAmount);
   const dispatch = useAppDispatch();
 
+  const quickAmounts = [0, 1, 10, 100];
+
   const [infoVisible, setInfoVisible] = useState(false);
 
   const [, use] = useDrop<DragSource, void, any>(() => ({
@@ -35,15 +37,30 @@ const InventoryControl: React.FC = () => {
     dispatch(setItemAmount(event.target.valueAsNumber));
   };
 
+  const setQuickAmount = (amount: number) => {
+    dispatch(setItemAmount(amount));
+  };
+
   return (
     <>
       <UsefulControls infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
       <div className="inventory-control">
         <div className="inventory-control-wrapper">
+          <div className="inventory-control-quick">
+            {quickAmounts.map((amount) => (
+              <button
+                key={`quick-${amount}`}
+                className="inventory-control-quick-button"
+                onClick={() => setQuickAmount(amount)}
+              >
+                {amount}
+              </button>
+            ))}
+          </div>
           <input
             className="inventory-control-input"
             type="number"
-            defaultValue={itemAmount}
+            value={itemAmount}
             onChange={inputHandler}
             min={0}
           />
