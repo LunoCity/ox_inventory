@@ -38,7 +38,12 @@ const InventoryControl: React.FC = () => {
   };
 
   const setQuickAmount = (amount: number) => {
-    dispatch(setItemAmount(amount));
+    if (amount === 0) {
+      dispatch(setItemAmount(0));
+      return;
+    }
+
+    dispatch(setItemAmount(itemAmount + amount));
   };
 
   return (
