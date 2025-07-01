@@ -152,6 +152,18 @@ button:active {
     }
   }
 
+  .inventory-control-quick {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+
+    .inventory-control-quick-button {
+      @extend .inventory-control-button;
+      padding: 8px 4px;
+      flex: 1;
+    }
+  }
+
   .inventory-control-button {
     font-size: 14px;
     color: #fff;
