@@ -8,9 +8,11 @@ export const setupInventoryReducer: CaseReducer<
   PayloadAction<{
     leftInventory?: Inventory;
     rightInventory?: Inventory;
+    cash?: number;
+    bank?: number;
   }>
 > = (state, action) => {
-  const { leftInventory, rightInventory } = action.payload;
+  const { leftInventory, rightInventory, cash, bank } = action.payload;
   const curTime = Math.floor(Date.now() / 1000);
 
   if (leftInventory)
@@ -50,6 +52,9 @@ export const setupInventoryReducer: CaseReducer<
         return item;
       }),
     };
+
+  if (typeof cash === 'number') state.cash = cash;
+  if (typeof bank === 'number') state.bank = bank;
 
   state.shiftPressed = false;
   state.isBusy = false;

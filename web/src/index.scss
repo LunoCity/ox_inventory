@@ -121,8 +121,23 @@ button:active {
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
 
   gap: 20px;
+}
+
+.money-display {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background-color: $secondaryColor;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: $textColor;
+  font-family: $mainFont;
 }
 
 .inventory-control {

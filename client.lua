@@ -279,7 +279,9 @@ function client.openInventory(inv, data)
         action = 'setupInventory',
         data = {
             leftInventory = left,
-            rightInventory = currentInventory
+            rightInventory = currentInventory,
+            cash = left.cash,
+            bank = left.bank
         }
     })
 
@@ -333,13 +335,15 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 	left.items = PlayerData.inventory
 	left.groups = PlayerData.groups
 
-	SendNUIMessage({
-		action = 'setupInventory',
-		data = {
-			leftInventory = left,
-			rightInventory = currentInventory
-		}
-	})
+        SendNUIMessage({
+                action = 'setupInventory',
+                data = {
+                        leftInventory = left,
+                        rightInventory = currentInventory,
+                        cash = left.cash,
+                        bank = left.bank
+                }
+        })
 end)
 
 local Animations = lib.load('data.animations')
@@ -1567,13 +1571,15 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 	left.items = PlayerData.inventory
 	left.groups = PlayerData.groups
 
-	SendNUIMessage({
-		action = 'setupInventory',
-		data = {
-			leftInventory = left,
-			rightInventory = currentInventory
-		}
-	})
+        SendNUIMessage({
+                action = 'setupInventory',
+                data = {
+                        leftInventory = left,
+                        rightInventory = currentInventory,
+                        cash = left.cash,
+                        bank = left.bank
+                }
+        })
 end)
 
 RegisterNUICallback('uiLoaded', function(_, cb)

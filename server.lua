@@ -198,14 +198,20 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 		left:openInventory(left)
 	end
 
-	return {
-		id = left.id,
-		label = left.label,
-		type = left.type,
-		slots = left.slots,
-		weight = left.weight,
-		maxWeight = left.maxWeight
-	}, right and {
+        local player = server.GetPlayerFromId(left.id)
+        local cash = player and player.Functions.GetMoney('cash') or 0
+        local bank = player and player.Functions.GetMoney('bank') or 0
+
+        return {
+                id = left.id,
+                label = left.label,
+                type = left.type,
+                slots = left.slots,
+                weight = left.weight,
+                maxWeight = left.maxWeight,
+                cash = cash,
+                bank = bank
+        }, right and {
 		id = right.id,
 		label = right.player and '' or right.label,
 		type = right.player and 'otherplayer' or right.type,

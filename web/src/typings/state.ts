@@ -4,6 +4,8 @@ import { Slot } from './slot';
 export type State = {
   leftInventory: Inventory;
   rightInventory: Inventory;
+  cash: number;
+  bank: number;
   itemAmount: number;
   shiftPressed: boolean;
   isBusy: boolean;
