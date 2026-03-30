@@ -31,14 +31,6 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
     <>
       <div className="inventory-grid-wrapper" style={{ pointerEvents: isBusy ? 'none' : 'auto' }}>
         <div>
-          <div className="inventory-grid-header-wrapper">
-            <p>{inventory.label}</p>
-            {inventory.maxWeight && (
-              <p>
-                {weight / 1000}/{inventory.maxWeight / 1000}kg
-              </p>
-            )}
-          </div>
           {inventory.type === 'player' && inventory.cash !== undefined && (
             <div className="inventory-money-display">
               <div className="inventory-money-item inventory-money-cash">
@@ -51,6 +43,14 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
               </div>
             </div>
           )}
+          <div className="inventory-grid-header-wrapper">
+            <p>{inventory.label}</p>
+            {inventory.maxWeight && (
+              <p>
+                {weight / 1000}/{inventory.maxWeight / 1000}kg
+              </p>
+            )}
+          </div>
           <WeightBar percent={inventory.maxWeight ? (weight / inventory.maxWeight) * 100 : 0} />
         </div>
         <div className="inventory-grid-container" ref={containerRef}>
