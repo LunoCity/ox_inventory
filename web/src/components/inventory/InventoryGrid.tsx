@@ -46,7 +46,7 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
                 <span className="inventory-money-value">${formatMoney(inventory.cash)}</span>
               </div>
               <div className="inventory-money-item inventory-money-bank">
-                <span className="inventory-money-icon">🐷</span>
+                <span className="inventory-money-icon">💰️</span>
                 <span className="inventory-money-value">${formatMoney(inventory.bank ?? 0)}</span>
               </div>
             </div>
