@@ -198,13 +198,17 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 		left:openInventory(left)
 	end
 
+	local cash, bank = server.getPlayerMoney(source)
+
 	return {
 		id = left.id,
 		label = left.label,
 		type = left.type,
 		slots = left.slots,
 		weight = left.weight,
-		maxWeight = left.maxWeight
+		maxWeight = left.maxWeight,
+		cash = cash,
+		bank = bank,
 	}, right and {
 		id = right.id,
 		label = right.player and '' or right.label,

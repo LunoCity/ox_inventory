@@ -21,6 +21,14 @@ function server.setPlayerData(player)
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
+function server.getPlayerMoney(source)
+    local player = Ox.GetPlayer(source)
+    if not player then return 0, 0 end
+    local accounts = player.getAccounts and player.getAccounts() or {}
+    return accounts.cash or 0, accounts.bank or 0
+end
+
+---@diagnostic disable-next-line: duplicate-set-field
 function server.hasLicense(inv, name)
 	local player = Ox.GetPlayer(inv.id)
 

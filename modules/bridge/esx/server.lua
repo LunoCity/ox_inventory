@@ -45,6 +45,15 @@ function server.setPlayerData(player)
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
+function server.getPlayerMoney(source)
+    local player = server.GetPlayerFromId(source)
+    if not player then return 0, 0 end
+    local cash = player.getAccount('money')
+    local bank = player.getAccount('bank')
+    return cash and cash.money or 0, bank and bank.money or 0
+end
+
+---@diagnostic disable-next-line: duplicate-set-field
 function server.syncInventory(inv)
 	local accounts = Inventory.GetAccountItemCounts(inv)
 

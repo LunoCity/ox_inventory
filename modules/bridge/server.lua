@@ -37,6 +37,13 @@ function server.buyLicense()
 	warn('Licenses are not supported for the current framework.')
 end
 
+---@param source number
+---@return number cash, number bank
+---@diagnostic disable-next-line: duplicate-set-field
+function server.getPlayerMoney(source)
+	return 0, 0
+end
+
 local Inventory = require 'modules.inventory.server'
 
 function server.playerDropped(source)

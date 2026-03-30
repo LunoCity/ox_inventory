@@ -283,6 +283,41 @@ button:active {
   }
 }
 
+.inventory-money-display {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.inventory-money-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: $secondaryColor;
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+.inventory-money-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.inventory-money-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: $textColor;
+}
+
+.inventory-money-cash .inventory-money-value {
+  color: #85bb65;
+}
+
+.inventory-money-bank .inventory-money-value {
+  color: #64b5f6;
+}
+
 .inventory-grid-container {
   display: grid;
   height: $containerSize;

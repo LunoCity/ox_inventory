@@ -8,6 +8,10 @@ import { useIntersection } from '../../hooks/useIntersection';
 
 const PAGE_SIZE = 30;
 
+const formatMoney = (amount: number): string => {
+  return amount.toLocaleString('en-US');
+};
+
 const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   const weight = useMemo(
     () => (inventory.maxWeight !== undefined ? Math.floor(getTotalWeight(inventory.items) * 1000) / 1000 : 0),
@@ -35,6 +39,18 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
               </p>
             )}
           </div>
+          {inventory.type === 'player' && inventory.cash !== undefined && (
+            <div className="inventory-money-display">
+              <div className="inventory-money-item inventory-money-cash">
+                <span className="inventory-money-icon">💵</span>
+                <span className="inventory-money-value">${formatMoney(inventory.cash)}</span>
+              </div>
+              <div className="inventory-money-item inventory-money-bank">
+                <span className="inventory-money-icon">🐷</span>
+                <span className="inventory-money-value">${formatMoney(inventory.bank ?? 0)}</span>
+              </div>
+            </div>
+          )}
           <WeightBar percent={inventory.maxWeight ? (weight / inventory.maxWeight) * 100 : 0} />
         </div>
         <div className="inventory-grid-container" ref={containerRef}>

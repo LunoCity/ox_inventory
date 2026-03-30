@@ -114,6 +114,13 @@ AddEventHandler('QBCore:Server:OnMoneyChange', function(src, account, amount, ch
 end)
 
 ---@diagnostic disable-next-line: duplicate-set-field
+function server.getPlayerMoney(source)
+    local player = QBCore.Functions.GetPlayer(source)
+    if not player then return 0, 0 end
+    return player.Functions.GetMoney('cash') or 0, player.Functions.GetMoney('bank') or 0
+end
+
+---@diagnostic disable-next-line: duplicate-set-field
 function server.setPlayerData(player)
     local groups = {
         [player.job.name] = player.job.grade.level,
